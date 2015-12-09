@@ -10,7 +10,7 @@ requests made with different host names use hostile. Each host has its
 own mux that registers unique routes.
 
 ```go
-h := NewHostHandler()
+h := hostile.NewHostHandler()
 
 host1 := h.AddHost("host1.com")
 host2 := h.AddHost("host2.com")
