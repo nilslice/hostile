@@ -1,11 +1,32 @@
 # hostile
-    import "github.com/nilslice/hostile"
+import "github.com/nilslice/hostile"
 
-    hostile is a package for multi-host routing. When you need to respond to
-    requests made with different host names use hostile. Each host has its
-    own mux that registers unique routes.
+hostile is a package for multi-host routing. When you need to respond to
+requests made with different host names use hostile. Each host has its
+own mux that registers unique routes.
 
-#### type HostHandler struct {
+Example:
+```golang
+h := NewHostHandler()
+
+host1 := h.AddHost("host1.com")
+host2 := h.AddHost("host2.com")
+
+host1.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
+    res.Write([]byte("host1 has own '/' route and handler"))
+})
+
+host2.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
+    res.Write([]byte("host2 has own '/' route and handler"))
+})
+
+err := http.ListenAndServe(":8000", h)
+if err != nil {
+    fmt.Println(err)
+}
+```x
+
+#### type HostHandler struct
 
     HostHandler implements http.Handler interface and contains a map of host
     names whose values are a *http.ServeMux to register per-host routes.
