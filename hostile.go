@@ -36,7 +36,6 @@ func (h HostHandler) IsEligible(host string) (string, bool) {
 // AddHost creates a new ServeMux per added host and sets in in the eligibleHosts
 // map within the HostHandler. Each host has its own mux so you can assign routes
 // to individial hosts.
-
 // Example:
 // 	newHost := h.AddHost("newhost.com")
 // 	newHost.HandleFunc("/route", handler)

@@ -1,11 +1,15 @@
 # hostile
+
+### Usage
+```go
 import "github.com/nilslice/hostile"
+```
 
 hostile is a package for multi-host routing. When you need to respond to
 requests made with different host names use hostile. Each host has its
 own mux that registers unique routes.
 
-```golang
+```go
 h := NewHostHandler()
 
 host1 := h.AddHost("host1.com")
@@ -37,10 +41,15 @@ if err != nil {
     http.ListenAndServe or http.Handle and the like.
 
 #### func (h *HostHandler) AddHost(host string) *http.ServeMux
+    AddHost creates a new ServeMux per added host and sets in in the
+    eligibleHosts map within the HostHandler. Each host has its own mux so
+    you can assign routes to individial hosts.
+    
     Example:
-
+    ```go
 	newHost := h.AddHost("newhost.com")
 	newHost.HandleFunc("/route", handler)
+    ```
 
 #### func (h HostHandler) IsEligible(host string) (string, bool)
     IsEligible is a helper function which tests host eligibility and returns
