@@ -5,11 +5,8 @@
     requests made with different host names use hostile. Each host has its
     own mux that registers unique routes.
 
-```
-type HostHandler struct {
-    // contains filtered or unexported fields
-}
-```
+#### type HostHandler struct {
+
     HostHandler implements http.Handler interface and contains a map of host
     names whose values are a *http.ServeMux to register per-host routes.
 
