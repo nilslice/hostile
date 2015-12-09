@@ -5,7 +5,6 @@ hostile is a package for multi-host routing. When you need to respond to
 requests made with different host names use hostile. Each host has its
 own mux that registers unique routes.
 
-Example:
 ```golang
 h := NewHostHandler()
 
@@ -24,7 +23,7 @@ err := http.ListenAndServe(":8000", h)
 if err != nil {
     fmt.Println(err)
 }
-```x
+```
 
 #### type HostHandler struct
 
