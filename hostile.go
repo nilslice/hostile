@@ -28,9 +28,8 @@ func NewHostHandler() *HostHandler {
 func (h HostHandler) IsEligible(host string) (string, bool) {
 	if _, ok := h.eligibleHosts[host]; ok {
 		return host, true
-	} else {
-		return host, false
 	}
+	return host, false
 }
 
 // AddHost creates a new ServeMux per added host and sets in in the eligibleHosts

@@ -1,5 +1,5 @@
 # hostile
-
+[![GoDoc](https://godoc.org/github.com/nilslice/hostile?status.svg)](https://godoc.org/github.com/nilslice/hostile)
 ### Usage
 ```go
 import "github.com/nilslice/hostile"
