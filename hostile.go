@@ -1,7 +1,6 @@
 package hostile
 
 import (
-	"fmt"
 	"net/http"
 )
 
@@ -49,7 +48,6 @@ func (h *HostHandler) AddHost(host string) *http.ServeMux {
 // writer to the handler of a the host if it is found.
 func (h *HostHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	if host, ok := h.IsEligible(req.Host); ok {
-		fmt.Println("request to", host)
 		h.eligibleHosts[host].ServeHTTP(res, req)
 	} else {
 		http.Error(res, "Forbidden", http.StatusForbidden)
